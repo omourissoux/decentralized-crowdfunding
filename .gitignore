@@ -1,0 +1,79 @@
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+build/
+dist/
+.esbuild/
+
+# Production environment variables
+.env
+.env.local
+.env.production
+.env.production.local
+.env.test
+.env.test.local
+
+# IDE-specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Service worker files (generated)
+service-worker.js
+workbox-*
+
+# Linting and testing outputs
+coverage/
+*.lcov
+
+# React-specific files
+*.cache
+public/static/
+public/icon-*.png
+
+# Solidity specific
+artifacts/
+cache/
+typechain/
+typechain-types/
+
+# Hardhat specific
+.hardhat/
+hardhat.config.ts
+hardhat.config.js
+
+# Secrets and private keys
+.secret
+*.key
+*.crt
+keystore/
+
+# Debugging outputs
+*.log
+*.pid
+*.seed
+debug.log
+
+# Dependencies lock files (optional, include if using a monorepo)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Ethereum dev keys and artifacts
+*.rdbg
+*.solcover.js
+.solcover/
