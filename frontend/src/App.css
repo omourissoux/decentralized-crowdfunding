@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #000;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.connect-wallet {
+  text-align: center;
+  padding: 2rem;
+}
+
+.connect-wallet .title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.connect-wallet .subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+

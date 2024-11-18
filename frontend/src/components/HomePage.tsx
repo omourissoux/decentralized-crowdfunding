@@ -1,33 +1,25 @@
 import React from 'react';
-import { useAccount } from 'wagmi';
-import ConnectWallet from './ConnectWallet';
 import CampaignForm from './CampaignForm';
 import CampaignList from './CampaignList';
+import { useAccount } from 'wagmi';
+import ConnectWallet from './ConnectWallet';
+
 
 const HomePage: React.FC = () => {
-  const { isConnected } = useAccount();
+  const { isConnected } = useAccount()
 
-  if (!isConnected) {
-    return (
-      <section className="section">
+    if (isConnected)
+      return (
         <div className="container">
-          <h1 className="title">Welcome to Decentralized Crowdfunding</h1>
-          <p className="subtitle">Please connect your wallet to continue.</p>
-          <ConnectWallet />
+          <section className="section">
+            <h1 className="title">Decentralized Crowdfunding Platform</h1>
+            <CampaignForm />
+            <CampaignList />
+          </section>
         </div>
-      </section>
-    );
-  }
+      );
 
-  return (
-    <div className="container">
-      <section className="section">
-        <h1 className="title">Decentralized Crowdfunding Platform</h1>
-        <CampaignForm />
-        <CampaignList />
-      </section>
-    </div>
-  );
+    return <ConnectWallet />;
 };
 
 export default HomePage;

@@ -7,7 +7,7 @@
 ![Solidity Badge](https://img.shields.io/badge/Smart%20Contracts-Solidity-363636)  
 ![License Badge](https://img.shields.io/badge/license-MIT-green)
 
-### A decentralized crowdfunding platform built with **React PWA**, **Hardhat**, and **Solidity**.
+## A decentralized crowdfunding platform built with **React PWA**, **Hardhat**, and **Solidity**
 
 ---
 

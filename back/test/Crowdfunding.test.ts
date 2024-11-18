@@ -11,13 +11,33 @@ describe("Crowdfunding", function () {
   beforeEach(async function () {
     const CrowdfundingFactory = await ethers.getContractFactory("Crowdfunding");
     [owner, addr1, addr2] = await hre.ethers.getSigners();
-    crowdfunding = await CrowdfundingFactory.deploy() as Crowdfunding;
+    crowdfunding = await CrowdfundingFactory.deploy(await owner.getAddress()) as Crowdfunding;
     await crowdfunding.getDeployedCode();
+  });
+
+  it("Should get a campaign", async function () {
+    await crowdfunding.createCampaign(ethers.parseEther("1"), 86400);
+    const campaign = await crowdfunding.getCampaign(0);
+
+    expect(campaign).to.not.be.null;
+    expect(campaign.goal).to.equal(ethers.parseEther("1"));
+  });
+
+  it("Should get campaignCount", async function () {
+    await crowdfunding.createCampaign(ethers.parseEther("1"), 86400);
+    const campaignCount = await crowdfunding.getCampaignCount();
+
+    expect(campaignCount).to.not.be.null;
+    expect(campaignCount).to.equal(1);
   });
 
   it("Should create a new campaign", async function () {
     await crowdfunding.createCampaign(ethers.parseEther("1"), 86400);
     const campaign = await crowdfunding.campaigns(0);
+
+    const campaignCount = await crowdfunding.campaignCount();
+
+    expect(campaignCount).to.equal(1);
     expect(campaign.goal).to.equal(ethers.parseEther("1"));
   });
 

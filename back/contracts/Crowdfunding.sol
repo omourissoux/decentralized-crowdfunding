@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.27;
 
-contract Crowdfunding {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract Crowdfunding is Ownable {
     struct Campaign {
         address creator;
         uint256 goal;
@@ -19,9 +21,29 @@ contract Crowdfunding {
     event Refunded(uint256 campaignId, address indexed contributor, uint256 amount);
     event Claimed(uint256 campaignId, address indexed creator, uint256 amount);
 
+    constructor(address _owner) Ownable(_owner) {
+        campaignCount = 0;
+    }
+
     modifier onlyCampaignOwner(uint256 _campaignId) {
         require(campaigns[_campaignId].creator == msg.sender, "Not the campaign owner");
         _;
+    }
+
+    function getCampaignGoal(uint256 _campaignId) external view returns (uint256) {
+        return campaigns[_campaignId].goal;
+    }
+
+    function getCampaignDeadLine(uint256 _campaignId) external view returns (uint256) {
+        return campaigns[_campaignId].deadline;
+    }
+
+    function getCampaignCreator(uint256 _campaignId) external view returns (address) {
+        return campaigns[_campaignId].creator;
+    }
+
+    function getCampaignPleged(uint256 _campaignId) external view returns (uint256) {
+        return campaigns[_campaignId].pledged;
     }
 
     function createCampaign(uint256 _goal, uint256 _duration) external {
